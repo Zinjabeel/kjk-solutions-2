@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ClipboardList, HardHat, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, ClipboardList, HardHat, Phone, ShieldCheck, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 import heroImg from "@/assets/hero-warehouse.jpg";
 import bannerNew from "@/assets/banner-new.jpg";
 import bannerUsed from "@/assets/banner-used.jpg";
 import { useProducts } from "@/hooks/useProducts";
 import { ProductCard } from "@/components/site/ProductCard";
 import { CategoryGrid } from "@/components/site/CategoryGrid";
+import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 import { RAW_PRODUCTS } from "@/lib/catalog";
 
 export const Route = createFileRoute("/")({
@@ -214,6 +215,121 @@ function Home() {
         </div>
       </section>
 
+      <section className="border-t border-border bg-charcoal text-bone">
+        <div className="container-tight py-16 lg:py-20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div>
+            <p className="eyebrow text-bone/60">Kontakt</p>
+            <h2 className="mt-2 font-display text-2xl lg:text-4xl">Vi hjälper dig hitta rätt lösning</h2>
+            <p className="mt-3 text-bone/70 text-sm max-w-md">
+              Måndag–fredag 07:00–17:00 · Stockholm, Göteborg och Malmö
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="tel:0854353155"
+              className="inline-flex items-center gap-2 bg-safety text-safety-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-safety/90"
+            >
+              <Phone className="h-4 w-4" />
+              08-543 531 55
+            </a>
+            <a
+              href="mailto:info@kjk.se"
+              className="inline-flex items-center gap-2 border border-bone/30 px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bone/10"
+            >
+              info@kjk.se
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="container-tight py-24 lg:py-32">
+        <div className="mb-12">
+          <p className="eyebrow">Kundrecensioner</p>
+          <h2 className="mt-3 font-display text-3xl lg:text-5xl">Vad säger våra kunder?</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
+            Med över 50 års erfarenhet har vi hjälpt tusentals företag i Sverige hitta perfekta lagerlösningar.
+            Läs vad våra kunder säger om oss.
+          </p>
+        </div>
+        <ReviewsCarousel />
+        <div className="mt-8 flex justify-center">
+          <a
+            href="https://www.google.com/maps/place/KJK+Lagerprodukter+AB/@59.3973042,15.8574166,17z/data=!4m8!3m7!1s0x465e9d6fa40438c7:0xcf624164a95784f9!8m2!3d59.3973042!4d15.8574166!9m1!1b1!16s%2Fg%2F1hc0vrnyw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold border-b border-charcoal pb-1 hover:text-safety transition-colors"
+          >
+            Se alla recensioner på Google Maps
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
+
+      {/* Reviews & Social Media CTA Section */}
+      <section className="relative overflow-hidden border-t border-b border-border">
+        <div className="absolute inset-0">
+          <img
+            src={heroImg}
+            alt="Lager bakgrund"
+            width={1920}
+            height={800}
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/85 to-charcoal/75" />
+        </div>
+        <div className="relative container-tight py-24 lg:py-32">
+          <div className="max-w-3xl mx-auto text-center text-bone">
+            <h2 className="font-display text-3xl lg:text-5xl leading-tight mb-6">
+              Har du använt vår service? Dela din erfarenhet!
+            </h2>
+            <p className="text-lg text-bone/80 mb-12">
+              Dina recensioner hjälper andra företag att fatta rätt beslut om lagerlösningar.
+              Lämna en recension på Google och följ oss på sociala medier för nyheter och tips.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+              <a
+                href="https://www.google.com/maps/place/KJK+Lagerprodukter+AB/@59.3973042,15.8574166,17z/data=!4m8!3m7!1s0x465e9d6fa40438c7:0xcf624164a95784f9!8m2!3d59.3973042!4d15.8574166!9m1!1b1!16s%2Fg%2F1hc0vrnyw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-safety text-safety-foreground px-8 py-4 text-sm font-semibold tracking-wide hover:bg-safety/90 transition-colors rounded"
+              >
+                <MapPin className="h-4 w-4" />
+                Lämna recension på Google
+              </a>
+              <a
+                href="https://www.facebook.com/kjklagerprodukter/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-bone/10 border border-bone/30 text-bone hover:bg-bone/20 px-8 py-4 text-sm font-semibold tracking-wide transition-colors rounded"
+              >
+                <Facebook className="h-4 w-4" />
+                Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-bone/10 border border-bone/30 text-bone hover:bg-bone/20 px-8 py-4 text-sm font-semibold tracking-wide transition-colors rounded"
+              >
+                <Instagram className="h-4 w-4" />
+                Instagram
+              </a>
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-bone/10 border border-bone/30 text-bone hover:bg-bone/20 px-8 py-4 text-sm font-semibold tracking-wide transition-colors rounded"
+              >
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final Contact Section */}
       <section className="border-t border-border bg-charcoal text-bone">
         <div className="container-tight py-16 lg:py-20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div>
