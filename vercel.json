@@ -1,7 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
-  "serverlessFunctionRegion": "arn1",
   "nodeVersion": "20.x",
   "env": {
     "NODE_ENV": "production"
