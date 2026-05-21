@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProdukterRouteImport } from './routes/produkter'
+import { Route as OmOssRouteImport } from './routes/om-oss'
 import { Route as BegagnatRouteImport } from './routes/begagnat'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduktHandleRouteImport } from './routes/produkt.$handle'
@@ -24,6 +25,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ProdukterRoute = ProdukterRouteImport.update({
   id: '/produkter',
   path: '/produkter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmOssRoute = OmOssRouteImport.update({
+  id: '/om-oss',
+  path: '/om-oss',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BegagnatRoute = BegagnatRouteImport.update({
@@ -50,6 +56,7 @@ const KategoriSlugRoute = KategoriSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/begagnat': typeof BegagnatRoute
+  '/om-oss': typeof OmOssRoute
   '/produkter': typeof ProdukterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/kategori/$slug': typeof KategoriSlugRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/begagnat': typeof BegagnatRoute
+  '/om-oss': typeof OmOssRoute
   '/produkter': typeof ProdukterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/kategori/$slug': typeof KategoriSlugRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/begagnat': typeof BegagnatRoute
+  '/om-oss': typeof OmOssRoute
   '/produkter': typeof ProdukterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/kategori/$slug': typeof KategoriSlugRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/begagnat'
+    | '/om-oss'
     | '/produkter'
     | '/sitemap.xml'
     | '/kategori/$slug'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/begagnat'
+    | '/om-oss'
     | '/produkter'
     | '/sitemap.xml'
     | '/kategori/$slug'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/begagnat'
+    | '/om-oss'
     | '/produkter'
     | '/sitemap.xml'
     | '/kategori/$slug'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BegagnatRoute: typeof BegagnatRoute
+  OmOssRoute: typeof OmOssRoute
   ProdukterRoute: typeof ProdukterRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   KategoriSlugRoute: typeof KategoriSlugRoute
@@ -122,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/produkter'
       fullPath: '/produkter'
       preLoaderRoute: typeof ProdukterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-oss': {
+      id: '/om-oss'
+      path: '/om-oss'
+      fullPath: '/om-oss'
+      preLoaderRoute: typeof OmOssRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/begagnat': {
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BegagnatRoute: BegagnatRoute,
+  OmOssRoute: OmOssRoute,
   ProdukterRoute: ProdukterRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   KategoriSlugRoute: KategoriSlugRoute,

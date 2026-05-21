@@ -10,6 +10,7 @@ const NAV_PRIMARY = [
   { to: "/produkter", label: "Alla produkter" },
   { to: "/begagnat", label: "Begagnat" },
   { to: "/kategori/identifiera", label: "Identifiera ställ" },
+  { to: "/om-oss", label: "Om oss" },
 ] as const;
 
 const NAV_CATEGORIES = CATEGORIES.filter((c) =>
